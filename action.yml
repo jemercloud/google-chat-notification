@@ -1,0 +1,21 @@
+name: 'Google notification'
+description: 'Send a notification to Google Chat'
+input:
+  name:
+    description: 'Name of the notification'
+    required: true
+  url:
+    description: 'Google Chat webhook URL'
+    required: true
+  status:
+    description: 'Status of the job'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Google Chat Notification
+      uses: Co-qn/google-chat-notification@releases/v1
+      with:
+        name: ${{ inputs.name }}
+        url: ${{ inputs.url }}
+        status: ${{ inputs.status }}
